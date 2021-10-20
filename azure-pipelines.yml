@@ -5,38 +5,6 @@ variables:
 
 jobs:
 
-- template: run-tox-env.yml
-  parameters:
-    libraries:
-      yum:
-        - openssl-devel
-    envs:
-    - linux: py37-simple-linux
-      name: py37_simple_linux_custom_name
-    - linux32: py37-simple-linux32
-    - linux32: py38-simple-linux32
-    - manylinux: py37-simple-linux
-      manylinux_image: manylinux2014_x86_64
-    - linux: py39-simple-linux
-      docker_image: python:3.9.0rc1-slim-buster
-      docker_python: /usr/local/bin/python
-    - macos: py37-simple-macos
-    - windows: py37-simple-windows
-    - macos: compiler_macos_conda
-
-- template: run-tox-env.yml
-  parameters:
-    mesaopengl: true
-    envs:
-    - macos: py37-opengl-macos
-    - windows: py37-opengl-windows
-
-- template: run-tox-env.yml
-  parameters:
-    envs:
-    - linux: testtoxargs
-      toxargs: --notest
-
 - template: publish.yml
   parameters:
     artifact_project: azure-pipelines-templates
